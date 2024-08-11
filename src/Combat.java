@@ -16,50 +16,61 @@ public class Combat {
         updateCombatStatus();
     }
 
-    public void performAction(String action) {
+    public void performAction(String action)
+    {
         System.out.println("Performing action: " + action);
-        try {
-            if (player.getActionResourceAmount() > 0) {
-                String actionResult = player.performCombatAction(action, enemy);
-                listener.updateCombatMessage(actionResult);
+        System.out.println("Action resource amount: " + player.getActionResourceAmount());
+        try
+        {
+                if (player.getActionResourceAmount() > 0) {
+                    String actionResult = player.performCombatAction(action, enemy);
+                    listener.updateCombatMessage(actionResult);
 
-                if (enemy.getHealth() <= 0) {
-                    listener.updateCombatMessage("You defeated " + enemy.getName());
-                    return;
-                }
-                System.out.println("Player's defence is: " + player.getEffectiveMeleeDefence());
-                System.out.println("Player's health is: " + player.getEffectiveHealth());
+                    if (enemy.getHealth() <= 0) {
+                        listener.updateCombatMessage("You defeated " + enemy.getName());
+                        return;
+                    }
 
-                if (player.getActionResourceAmount() <= 0) {
-                    listener.updateCombatMessage("You have used all your " + player.getActionResourceName());
+                    System.out.println("Player's defence is: " + player.getEffectiveMeleeDefence());
+                    System.out.println("Player's health is: " + player.getEffectiveHealth());
+                    System.out.println("Player's action resource is: " + player.getActionResourceAmount());
+
+
+                    // Check if player has any action resource left
+                    if (player.getActionResourceAmount() <= 0) {
+                        listener.updateCombatMessage("You have used all your " + player.getActionResourceName());
+                        enemyTurn(); // Now the enemy takes its turn after the player exhausts their resources
+                        resetPlayerActionResource(); // Reset player action resource for the next turn
+                    }
+                } else {
+                    listener.updateCombatMessage("You have exhausted your " + player.getActionResourceName());
+                    enemyTurn();
                     resetPlayerActionResource();
                 }
-            }
 
-            if (player.getActionResourceAmount() <= 0) {
-                enemyTurn();
-                resetPlayerActionResource();
-            }
+                    if (player.getHealth() <= 0)
+                    {
+                        listener.updateCombatMessage("You were defeated by " + enemy.getName());
+                        //            currentCombat = null; // You can uncomment this to end combat
+                    }
 
-            if (player.getHealth() <= 0) {
-                listener.updateCombatMessage("You were defeated by " + enemy.getName());
-                // End combat, assuming there's some field or state to manage this
-//                currentCombat = null; // Uncomment if you have such a field
-            }
 
-            updateCombatStatus();
-
-            resetBuffs();
+                updateCombatStatus();
+                resetBuffs();
         } catch (IllegalArgumentException e) {
             listener.updateCombatMessage(e.getMessage());
         }
     }
 
-    private void resetPlayerActionResource() {
+
+    private void resetPlayerActionResource()
+    {
+        System.out.println("Resetting player action resource.");
         player.resetActionResource(player);
     }
 
-    private void resetBuffs() {
+    private void resetBuffs()
+    {
         // Reset player buffs
         player.resetTempMeleeAttackBuff();
         player.resetTempMeleeDefenceBuff();

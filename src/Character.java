@@ -49,7 +49,7 @@ public abstract class Character
 
     public abstract String getActionResourceName();
     public abstract int getActionResourceAmount();
-    public abstract void reduceActionResource(int cost);
+//    public abstract void reduceActionResource(int cost);
 
 
     //getters
@@ -102,17 +102,6 @@ public abstract class Character
         return level;
     }
 
-//    public int getDruidEssence() {
-//        return druidEssence;
-//    }
-//
-//    public int getMageMana() {
-//        return mageMana;
-//    }
-//
-//    public int getWarriorStamina() {
-//        return warriorStamina;
-//    }
 
     public Inventory getInventory()
     {
@@ -187,21 +176,12 @@ public abstract class Character
         this.level = level;
     }
 
-    public void setActionResource(int amount) {
+    public void setActionResource(int amount)
+    {
+        System.out.println("Setting action resource to " + amount);
         this.actionResource = amount;
     }
 
-    //    public void setDruidEssence(int druidEssence) {
-//        this.druidEssence = druidEssence;
-//    }
-//
-//    public void setWarriorStamina(int warriorStamina) {
-//        this.warriorStamina = warriorStamina;
-//    }
-//
-//    public void setMageMana(int mageMana) {
-//        this.mageMana = mageMana;
-//    }
 
     public void setTempMeleeDefenceBuff(int buff)
     {
@@ -243,35 +223,13 @@ public abstract class Character
         this.tempSpellAttackBuff = 0;
     }
 
-//    public boolean hasEnoughMana(int cost)
-//    {
-//        return mageMana >= cost;
-//    }
-//
-//    public boolean hasEnoughStamina(int cost)
-//    {
-//        return warriorStamina >= cost;
-//    }
-//
-//    public boolean hasEnoughEssence(int cost)
-//    {
-//        return druidEssence >= cost;
-//    }
-//
-//    public void reduceMana(int cost)
-//    {
-//        mageMana -= cost;
-//    }
-//
-//    public void reduceStamina(int cost)
-//    {
-//        warriorStamina -= cost;
-//    }
-//
-//    public void reduceEssence(int cost)
-//    {
-//        druidEssence -= cost;
-//    }
+    public void reduceActionResource(int amount)
+    {
+        System.out.println("Reducing action resource by " + amount);
+        actionResource -= amount;
+    }
+
+
 
     public void resetActionResource(Character player)
     {

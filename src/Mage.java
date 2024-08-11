@@ -1,6 +1,7 @@
 public class Mage extends Character {
     public Mage() {
         super("Mage", 100, 5, 15, 5, 10, 0, 0, 0,5);
+        this.actionResource = 5;
         getInventory().addItem(new Item("Magic Staff", 0, 0, 0, 10, 10));
         getInventory().addItem(new Item("Spell Book", 10, 0, 0, 10, 10));
         initialiseCombatActions();
@@ -10,6 +11,8 @@ public class Mage extends Character {
     public void initialiseCombatActions() {
         addCombatAction("Frost Bolt", new FrostBoltAction());
         addCombatAction("Barrier", new BarrierAction());
+        addCombatAction("Magic Missile", new MagicMissileAction() {
+        });
     }
 
     @Override

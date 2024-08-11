@@ -1,7 +1,7 @@
 public class FrostBoltAction implements CombatAction
 {
 
-    private static final int COST = 1;
+    private static final int COST = 2;
 
     @Override
     public void execute(Character player, Enemy enemy)

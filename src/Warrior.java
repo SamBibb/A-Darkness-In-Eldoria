@@ -8,6 +8,7 @@ public class Warrior extends Character
     public Warrior()
     {
         super("Warrior", 100, 15,5, 10,5,0,0,0,5);
+        this.actionResource = 5;
         getInventory().addItem(new Item("Long Sword", 0,10,0,0, 0));
         initialiseCombatActions();
     }
