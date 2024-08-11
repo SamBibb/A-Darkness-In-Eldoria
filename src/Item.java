@@ -22,23 +22,28 @@ public class Item
         return name;
     }
 
-    public int getHealthModifier() {
+    public int getHealthModifier()
+    {
         return healthModifier;
     }
 
-    public int getMeleeAttackModifier() {
+    public int getMeleeAttackModifier()
+    {
         return meleeAttackModifier;
     }
 
-    public int getMeleeDefenceModifier() {
+    public int getMeleeDefenceModifier()
+    {
         return meleeDefenceModifier;
     }
 
-    public int getSpellAttackModifier() {
+    public int getSpellAttackModifier()
+    {
         return spellAttackModifier;
     }
 
-    public int getSpellDefenceModifier() {
+    public int getSpellDefenceModifier()
+    {
         return spellDefenceModifier;
     }
 }

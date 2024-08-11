@@ -1,4 +1,5 @@
-public class Mage extends Character {
+public class Mage extends Character
+{
     public Mage() {
         super("Mage", 100, 5, 15, 5, 10, 0, 0, 0,5);
         this.actionResource = 5;
@@ -8,7 +9,8 @@ public class Mage extends Character {
     }
 
     @Override
-    public void initialiseCombatActions() {
+    public void initialiseCombatActions()
+    {
         addCombatAction("Frost Bolt", new FrostBoltAction());
         addCombatAction("Barrier", new BarrierAction());
         addCombatAction("Magic Missile", new MagicMissileAction() {
@@ -28,7 +30,8 @@ public class Mage extends Character {
     }
 
     @Override
-    public void reduceActionResource(int cost) {
+    public void reduceActionResource(int cost)
+    {
         setActionResource(getActionResource() - cost);
     }
 

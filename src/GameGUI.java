@@ -133,15 +133,19 @@ public class GameGUI implements CombatUpdateListener
         }
     }
 
-    private void handleCommand(String command) {
-        if (currentCombat != null) {
+    private void handleCommand(String command)
+    {
+        if (currentCombat != null)
+        {
             currentCombat.performAction(command);
             updateStory();
             updateCombatButtons();
             updateInventory();
-        } else if (command.equalsIgnoreCase("inventory")) {
+        } else if (command.equalsIgnoreCase("inventory"))
+        {
             updateInventory();
-        } else if (game.getCurrentNode().hasCombat()) {
+        } else if (game.getCurrentNode().hasCombat())
+        {
             initiateCombat(game.getCurrentNode().getEnemy());
         } else {
             game.processCommand(command);
@@ -160,12 +164,14 @@ public class GameGUI implements CombatUpdateListener
     }
 
 
-    private void updateStory() {
+    private void updateStory()
+    {
         storyTextArea.setText(game.getCurrentNodeDescription());
 
         nodeOptionsPanel.removeAll();
         List<String> options = game.getCurrentNodeOptions();
-        for (String option : options) {
+        for (String option : options)
+        {
             JButton button = new JButton(option);
             button.addActionListener(e -> handleCommand(option));
             nodeOptionsPanel.add(button);
@@ -173,18 +179,22 @@ public class GameGUI implements CombatUpdateListener
         nodeOptionsPanel.revalidate();
         nodeOptionsPanel.repaint();
 
-        if (game.getCurrentNode().hasCombat()) {
+        if (game.getCurrentNode().hasCombat())
+        {
             startCombatButton.setVisible(true); // Show button if there is combat
-        } else {
+        } else
+        {
             startCombatButton.setVisible(false); // Hide button if no combat
         }
 
         // Switch panels based on game state
         CardLayout cl = (CardLayout) (cardPanel.getLayout());
-        if (currentCombat != null) {
+        if (currentCombat != null)
+        {
             cl.show(cardPanel, "inputPanel");
             updateCombatButtons();
-        } else {
+        } else
+        {
             cl.show(cardPanel, "nodeOptions");
         }
 
@@ -224,8 +234,10 @@ public class GameGUI implements CombatUpdateListener
     }
 
     @Override
-    public void updateCombatMessage(String message) {
-        SwingUtilities.invokeLater(() -> {
+    public void updateCombatMessage(String message)
+    {
+        SwingUtilities.invokeLater(() ->
+        {
             storyTextArea.append(message + "\n ");
             storyTextArea.setCaretPosition(storyTextArea.getDocument().getLength()); // Scroll to the bottom
         });

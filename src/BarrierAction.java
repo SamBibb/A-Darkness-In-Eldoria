@@ -11,7 +11,8 @@ public class BarrierAction implements CombatAction
     }
 
     @Override
-    public String getMessage(Character player, Enemy enemy) {
+    public String getMessage(Character player, Enemy enemy)
+    {
         return "You cast barrier, increasing your spell defense!";
     }
 

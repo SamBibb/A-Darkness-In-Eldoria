@@ -2,7 +2,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Druid extends Character {
+public class Druid extends Character
+{
     public Druid() {
         super("Druid", 100, 10, 10, 10, 10, 0, 0, 0, 5);
         this.actionResource = 5;
@@ -12,7 +13,8 @@ public class Druid extends Character {
     }
 
     @Override
-    public void initialiseCombatActions() {
+    public void initialiseCombatActions()
+    {
         addCombatAction("Quick strike", new QuickStrikeAction());
         addCombatAction("Sword block", new SwordBlockAction());
     }
@@ -30,7 +32,8 @@ public class Druid extends Character {
     }
 
     @Override
-    public void reduceActionResource(int cost) {
+    public void reduceActionResource(int cost)
+    {
         setActionResource(getActionResource() - cost);
     }
 

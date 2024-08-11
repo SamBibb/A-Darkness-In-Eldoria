@@ -15,9 +15,6 @@ public abstract class Character
     private int experience;
     public int actionResource;
     public int initialActionResource;
-//    private int mageMana;
-//    private int warriorStamina;
-//    private int druidEssence;
     private int level;
     private Inventory inventory;
     private int tempMeleeDefenceBuff = 0;
@@ -41,9 +38,6 @@ public abstract class Character
         this.inventory = new Inventory();
         this.actionResource = actionResource;
         this.initialActionResource = initialActionResource;
-//        this.warriorStamina = warriorStamina;
-//        this.druidEssence = druidEssence;
-//        this.mageMana = mageMana;
         initialiseCombatActions();
     }
 
@@ -153,7 +147,8 @@ public abstract class Character
         this.meleeAttack = meleeAttack;
     }
 
-    public void setSpellAttack(int spellAttack) {
+    public void setSpellAttack(int spellAttack)
+    {
         this.spellAttack = spellAttack;
     }
 
@@ -162,7 +157,8 @@ public abstract class Character
         this.meleeDefence = meleeDefence;
     }
 
-    public void setSpellDefence(int spellDefence) {
+    public void setSpellDefence(int spellDefence)
+    {
         this.spellDefence = spellDefence;
     }
 
@@ -254,7 +250,6 @@ public abstract class Character
             {
                 return "Not enough " + getActionResourceName() + " to perform " + action;
             }
-            reduceActionResource(resourceCost);
             combatAction.execute(this, enemy);
             return combatAction.getMessage(this, enemy);
         } else
